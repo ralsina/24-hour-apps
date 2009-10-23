@@ -184,7 +184,7 @@
     <string>Output</string>
    </property>
    <attribute name="dockWidgetArea">
-    <number>1</number>
+    <number>2</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -217,7 +217,7 @@
           <x>0</x>
           <y>0</y>
           <width>152</width>
-          <height>179</height>
+          <height>407</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -272,7 +272,7 @@
           <x>0</x>
           <y>0</y>
           <width>152</width>
-          <height>179</height>
+          <height>407</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -296,15 +296,6 @@
    </property>
    <property name="text">
     <string>Add Asset</string>
-   </property>
-  </action>
-  <action name="removeAsset">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/fileclose.svg</normaloff>:/icons/fileclose.svg</iconset>
-   </property>
-   <property name="text">
-    <string>Remove Asset</string>
    </property>
   </action>
  </widget>

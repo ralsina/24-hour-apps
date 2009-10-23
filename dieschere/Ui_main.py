@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 14:59:39 2009
+# Created: Fri Oct 23 15:19:29 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -121,7 +121,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.outputContainer = QtGui.QWidget(self.scrollArea_2)
-        self.outputContainer.setGeometry(QtCore.QRect(0, 0, 152, 179))
+        self.outputContainer.setGeometry(QtCore.QRect(0, 0, 152, 407))
         self.outputContainer.setObjectName("outputContainer")
         self.horizontalLayout_5 = QtGui.QHBoxLayout(self.outputContainer)
         self.horizontalLayout_5.setMargin(0)
@@ -132,7 +132,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidget(self.outputContainer)
         self.verticalLayout_4.addWidget(self.scrollArea_2)
         self.dockWidget.setWidget(self.dockWidgetContents)
-        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(1), self.dockWidget)
+        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.dockWidget)
         self.dockWidget_3 = QtGui.QDockWidget(MainWindow)
         self.dockWidget_3.setObjectName("dockWidget_3")
         self.dockWidgetContents_4 = QtGui.QWidget()
@@ -150,7 +150,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.assetContainer = QtGui.QWidget(self.scrollArea)
-        self.assetContainer.setGeometry(QtCore.QRect(0, 0, 152, 179))
+        self.assetContainer.setGeometry(QtCore.QRect(0, 0, 152, 407))
         self.assetContainer.setObjectName("assetContainer")
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.assetContainer)
         self.horizontalLayout_4.setMargin(0)
@@ -167,11 +167,6 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap(":/icons/fileopen.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.addAsset.setIcon(icon4)
         self.addAsset.setObjectName("addAsset")
-        self.removeAsset = QtGui.QAction(MainWindow)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/icons/fileclose.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.removeAsset.setIcon(icon5)
-        self.removeAsset.setObjectName("removeAsset")
         self.toolBar.addAction(self.addAsset)
 
         self.retranslateUi(MainWindow)
@@ -190,7 +185,6 @@ class Ui_MainWindow(object):
         self.dockWidget.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Output", None, QtGui.QApplication.UnicodeUTF8))
         self.dockWidget_3.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Assets", None, QtGui.QApplication.UnicodeUTF8))
         self.addAsset.setText(QtGui.QApplication.translate("MainWindow", "Add Asset", None, QtGui.QApplication.UnicodeUTF8))
-        self.removeAsset.setText(QtGui.QApplication.translate("MainWindow", "Remove Asset", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import phonon
 import icons_rc
