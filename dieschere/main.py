@@ -122,7 +122,7 @@ class Main(QtGui.QMainWindow):
             self.addAsset(fname)
             
     def addAsset(self,fname):
-        outputlabel=OutputLabel(unicode(fname))
+        outputlabel=OutputLabel(unicode(fname),self.ui.output)
         label=FilmLabel(unicode(fname))
         label.outputLabel=outputlabel
         self.ui.assets.addWidget(label)
@@ -185,12 +185,26 @@ class FilmLabel(QtGui.QPushButton):
                 self.outputLabel.show()
         
 class OutputLabel(FilmLabel):
-    def __init__(self,fname):
+    def __init__(self,fname,layout):
         FilmLabel.__init__(self,fname)
         self.ui.b1.setIcon(QtGui.QIcon(':/icons/up.svg'))
         self.ui.b2.setIcon(QtGui.QIcon(':/icons/down.svg'))
         self.ui.b1.setCheckable(False)
         self.ui.b2.setCheckable(False)
+        self.layout=layout
+        
+    def on_b1_clicked(self, b=None):
+        if b is None: return
+        pos=self.layout.indexOf(self)
+        if pos>0:
+            self.layout.removeWidget(self)
+            self.layout.insertWidget(pos-1,self)
+        
+    def on_b2_clicked(self, b=None):
+        if b is None: return
+        pos=self.layout.indexOf(self)
+        self.layout.removeWidget(self)
+        self.layout.insertWidget(pos+1,self)
         
 def main():
     # Again, this is boilerplate, it's going to be the same on 
