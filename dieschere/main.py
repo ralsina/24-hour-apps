@@ -125,7 +125,7 @@ class Main(QtGui.QMainWindow):
             print 'CMD:',cmd
 	    self.proc = QtCore.QProcess(self)
 	    self.proc.setProcessChannelMode(QtCore.QProcess.MergedChannels)
-	    self.proc.readyReadStandardOutput.connect(self.mencoderProgress)
+	    self.proc.readyRead.connect(self.mencoderProgress)
 	    self.proc.finished.connect(self.mencoderDone)
 	    self.message.setText('Encoding '+ fname)
 	    self.proc.start('/usr/bin/mencoder',['-ovc','copy','-oac','copy',self.curClip,
@@ -140,6 +140,8 @@ class Main(QtGui.QMainWindow):
     def mencoderProgress(self):
 	self.progress.show()
 	l=str(self.proc.readLine())[2:].strip()
+	print l
+	if 'Pos:' not in l: return 
 	pos=int(l.split('(')[1].split('%')[0])
 	self.progress.setValue(pos)
             
@@ -178,10 +180,13 @@ class Main(QtGui.QMainWindow):
                 if item is None: break
                 inputs.append(item.widget().fname)
                 i+=1
-            inputs=' '.join(["'%s'"%f for f in inputs])
-            cmd='mencoder -ovc lavc -oac lavc %s -o %s'%(inputs,fname)
-            # TODO use subprocess, run in a window
-            os.system(cmd)
+	    self.proc = QtCore.QProcess(self)
+	    self.proc.setProcessChannelMode(QtCore.QProcess.MergedChannels)
+	    self.proc.readyRead.connect(self.mencoderProgress)
+	    self.proc.finished.connect(self.mencoderDone)
+	    self.message.setText('Encoding '+ fname)
+	    self.proc.start('/usr/bin/mencoder',['-ovc','lavc','-oac','mp3lame']+inputs+
+						 ['-o',fname])
 
 class FilmLabel(QtGui.QPushButton):
     def __init__(self, fname):
