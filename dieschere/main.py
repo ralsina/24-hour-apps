@@ -119,9 +119,16 @@ class Main(QtGui.QMainWindow):
             os.system(cmd)
             
             # Add asset of the cutted clip
-            label=FilmLabel(unicode(fname))
-            self.ui.assets.addWidget(label)
-            self.assets.addButton(label)        
+            self.addAsset(fname)
+            
+    def addAsset(self,fname):
+        outputlabel=FilmLabel(unicode(fname))
+        label=FilmLabel(unicode(fname))
+        label.outputLabel=outputlabel
+        self.ui.assets.addWidget(label)
+        self.ui.output.addWidget(outputlabel)
+        self.assets.addButton(label)
+        outputlabel.hide()
             
     def on_play_toggled(self, b):
         if b: #play pressed
@@ -136,10 +143,7 @@ class Main(QtGui.QMainWindow):
         
         fname=QtGui.QFileDialog.getOpenFileName()
         if fname:
-            # Add an asset for this video
-            label=FilmLabel(unicode(fname))
-            self.ui.assets.addWidget(label)
-            self.assets.addButton(label)
+            self.addAsset(fname)
 
 class FilmLabel(QtGui.QPushButton):
     def __init__(self, fname):
@@ -149,6 +153,7 @@ class FilmLabel(QtGui.QPushButton):
         self.fname=fname
         self.setFixedSize(128,160)
         self.setCheckable(True)
+        self.outputLabel=None
         
         # TODO: replace the icon with a capture from the video
         self.ui.label.setText(os.path.basename(fname))
@@ -165,7 +170,20 @@ class FilmLabel(QtGui.QPushButton):
             
         return QtGui.QPushButton.setChecked(b)
         
-
+        
+    def on_useClip_toggled(self, b=None):
+        if b is None: return
+        if self.outputLabel is None:
+            if not b: # This is the outputlabel
+                self.hide()
+            else:
+                self.show()
+        else: # This is the assetlabel
+            if not b:
+                self.outputLabel.hide()
+            else:
+                self.outputLabel.show()
+        
 def main():
     # Again, this is boilerplate, it's going to be the same on 
     # almost every app you write

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'filmlabel.ui'
 #
-# Created: Fri Oct 23 14:30:01 2009
+# Created: Fri Oct 23 14:42:05 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,6 +44,7 @@ class Ui_Form(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/mark.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.useClip.setIcon(icon)
+        self.useClip.setCheckable(True)
         self.useClip.setObjectName("useClip")
         self.horizontalLayout.addWidget(self.useClip)
         self.deleteClip = QtGui.QToolButton(Form)
