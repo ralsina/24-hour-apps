@@ -7,6 +7,7 @@ import os,sys
 
 # Import Qt modules
 from PyQt4 import QtCore,QtGui
+from PyQt4.phonon import Phonon
 
 # Import the compiled UI module
 from Ui_main import Ui_MainWindow
@@ -26,6 +27,8 @@ def main():
     app = QtGui.QApplication(sys.argv)
     window=Main()
     window.show()
+    # Load a video, so I can implement the media controls
+    window.ui.player.load(Phonon.MediaSource('/home/ralsina/videostato/Video000.avi'))
     # It's exec_ because exec is a reserved word in Python
     sys.exit(app.exec_())
     

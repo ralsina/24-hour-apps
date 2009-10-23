@@ -211,5 +211,38 @@
  <resources>
   <include location="icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>play</sender>
+   <signal>clicked()</signal>
+   <receiver>player</receiver>
+   <slot>play()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>25</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pause</sender>
+   <signal>clicked()</signal>
+   <receiver>player</receiver>
+   <slot>stop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>183</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>71</x>
+     <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
