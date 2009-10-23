@@ -20,15 +20,29 @@ class Main(QtGui.QMainWindow):
         # This is always the same
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
+
+
+        # Load a video, so I can implement the media controls
+        self.ui.player.load(Phonon.MediaSource('/home/ralsina/videostato/Video000.avi'))
+
+        # Enable-disable buttons as needed
+        self.timer=QtCore.QTimer()
         
+    def on_play_toggled(self, b):
+        if b: #play pressed
+            self.ui.player.play()
+            self.ui.play.setIcon(QtGui.QIcon(':/icons/pause.svg'))
+        else: #pause pressed
+            self.ui.player.pause()
+            self.ui.play.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
+        
+
 def main():
     # Again, this is boilerplate, it's going to be the same on 
     # almost every app you write
     app = QtGui.QApplication(sys.argv)
     window=Main()
     window.show()
-    # Load a video, so I can implement the media controls
-    window.ui.player.load(Phonon.MediaSource('/home/ralsina/videostato/Video000.avi'))
     # It's exec_ because exec is a reserved word in Python
     sys.exit(app.exec_())
     

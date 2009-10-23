@@ -61,6 +61,9 @@
           <iconset resource="icons.qrc">
            <normaloff>:/icons/player_play.svg</normaloff>:/icons/player_play.svg</iconset>
          </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
@@ -213,34 +216,18 @@
  </resources>
  <connections>
   <connection>
-   <sender>play</sender>
-   <signal>clicked()</signal>
-   <receiver>player</receiver>
-   <slot>play()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>25</x>
-     <y>182</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>28</x>
-     <y>133</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pause</sender>
    <signal>clicked()</signal>
    <receiver>player</receiver>
    <slot>stop()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>56</x>
-     <y>183</y>
+     <x>51</x>
+     <y>186</y>
     </hint>
     <hint type="destinationlabel">
-     <x>71</x>
-     <y>143</y>
+     <x>66</x>
+     <y>109</y>
     </hint>
    </hints>
   </connection>

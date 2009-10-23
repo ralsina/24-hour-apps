@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 10:19:54 2009
+# Created: Fri Oct 23 10:49:32 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -49,6 +49,7 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/player_play.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.play.setIcon(icon)
+        self.play.setCheckable(True)
         self.play.setObjectName("play")
         self.horizontalLayout.addWidget(self.play)
         self.pause = QtGui.QToolButton(self.dockWidgetContents)
@@ -126,7 +127,6 @@ class Ui_MainWindow(object):
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.dockWidget_4)
 
         self.retranslateUi(MainWindow)
-        QtCore.QObject.connect(self.play, QtCore.SIGNAL("clicked()"), self.player.play)
         QtCore.QObject.connect(self.pause, QtCore.SIGNAL("clicked()"), self.player.stop)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
