@@ -6,30 +6,141 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>619</height>
+    <width>579</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>5000</width>
+     <height>5000</height>
+    </size>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <widget class="QLabel" name="label_2">
+     <widget class="Phonon::VideoPlayer" name="player">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="text">
-       <string>Output</string>
-      </property>
      </widget>
     </item>
     <item>
-     <widget class="QGraphicsView" name="output"/>
+     <layout class="QHBoxLayout" name="controls">
+      <item>
+       <widget class="QToolButton" name="play">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="icons.qrc">
+          <normaloff>:/icons/player_play.svg</normaloff>:/icons/player_play.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="stop">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="icons.qrc">
+          <normaloff>:/icons/player_stop.svg</normaloff>:/icons/player_stop.svg</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Phonon::VolumeSlider" name="volslider"/>
+      </item>
+      <item>
+       <widget class="Phonon::SeekSlider" name="seekslider"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Cut From:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="cutFrom"/>
+      </item>
+      <item>
+       <widget class="QToolButton" name="markFrom">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="icons.qrc">
+          <normaloff>:/icons/mark.svg</normaloff>:/icons/mark.svg</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Cut To:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="cutTo"/>
+      </item>
+      <item>
+       <widget class="QToolButton" name="markTo">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="icons.qrc">
+          <normaloff>:/icons/mark.svg</normaloff>:/icons/mark.svg</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="cut">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="icons.qrc">
+          <normaloff>:/icons/editcut.svg</normaloff>:/icons/editcut.svg</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -38,194 +149,113 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>579</width>
      <height>28</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="addAsset"/>
+   <addaction name="removeAsset"/>
+  </widget>
   <widget class="QDockWidget" name="dockWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>100</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="windowTitle">
+    <string>Output</string>
+   </property>
    <attribute name="dockWidgetArea">
-    <number>4</number>
+    <number>1</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="Phonon::VideoPlayer" name="player">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QScrollArea" name="scrollArea_2">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>156</width>
+         <height>156</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>156</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="outputContainer">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>152</width>
+          <height>188</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="output"/>
+         </item>
+        </layout>
+       </widget>
       </widget>
-     </item>
-     <item row="1" column="0">
-      <layout class="QHBoxLayout" name="controls">
-       <item>
-        <widget class="QToolButton" name="play">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons.qrc">
-           <normaloff>:/icons/player_play.svg</normaloff>:/icons/player_play.svg</iconset>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="pause">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons.qrc">
-           <normaloff>:/icons/player_stop.svg</normaloff>:/icons/player_stop.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="Phonon::VolumeSlider" name="volslider"/>
-       </item>
-       <item>
-        <widget class="Phonon::SeekSlider" name="seekslider"/>
-       </item>
-      </layout>
-     </item>
-     <item row="2" column="0" colspan="2">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Cut From:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="cutFrom"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="markFrom">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons.qrc">
-           <normaloff>:/icons/mark.svg</normaloff>:/icons/mark.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Cut To:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="cutTo"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="markTo">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons.qrc">
-           <normaloff>:/icons/mark.svg</normaloff>:/icons/mark.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QToolButton" name="cut">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons.qrc">
-           <normaloff>:/icons/editcut.svg</normaloff>:/icons/editcut.svg</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="dockWidget_2">
+  <widget class="QDockWidget" name="dockWidget_3">
+   <property name="windowTitle">
+    <string>Assets</string>
+   </property>
    <attribute name="dockWidgetArea">
-    <number>8</number>
+    <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents_2">
+   <widget class="QWidget" name="dockWidgetContents_4">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Assets</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QToolButton" name="addAsset">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons.qrc">
-           <normaloff>:/icons/fileopen.svg</normaloff>:/icons/fileopen.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="removeAsset">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons.qrc">
-           <normaloff>:/icons/fileclose.svg</normaloff>:/icons/fileclose.svg</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
       <widget class="QScrollArea" name="scrollArea">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
-         <width>0</width>
+         <width>156</width>
          <height>156</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>156</width>
+         <height>16777215</height>
         </size>
        </property>
        <property name="widgetResizable">
@@ -236,7 +266,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>578</width>
+          <width>152</width>
           <height>152</height>
          </rect>
         </property>
@@ -245,7 +275,7 @@
           <number>0</number>
          </property>
          <item>
-          <layout class="QHBoxLayout" name="assets"/>
+          <layout class="QVBoxLayout" name="assets"/>
          </item>
         </layout>
        </widget>
@@ -254,6 +284,24 @@
     </layout>
    </widget>
   </widget>
+  <action name="addAsset">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/fileopen.svg</normaloff>:/icons/fileopen.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add Asset</string>
+   </property>
+  </action>
+  <action name="removeAsset">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/fileclose.svg</normaloff>:/icons/fileclose.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Remove Asset</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -275,22 +323,5 @@
  <resources>
   <include location="icons.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>pause</sender>
-   <signal>clicked()</signal>
-   <receiver>player</receiver>
-   <slot>stop()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>51</x>
-     <y>186</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>66</x>
-     <y>109</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

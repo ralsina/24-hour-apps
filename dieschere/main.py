@@ -31,10 +31,27 @@ class Main(QtGui.QMainWindow):
         self.assets=QtGui.QButtonGroup()
         self.assets.setExclusive(True)
         self.assets.buttonClicked.connect(self.assetClicked)
+        self.ui.centralwidget.adjustSize()
         
     def tick(self):
         t=self.mediaObject.currentTime()
-        print t, self.ui.seeker.value()
+        
+    def stateChanged(self, state=None):
+        if state is None: return
+        
+        if state == Phonon.StoppedState:
+            self.ui.stop.setEnabled(False)
+            self.ui.play.setEnabled(True)
+            self.ui.play.setChecked(False)
+        elif state == Phonon.PlayingState:
+            self.ui.stop.setEnabled(True)
+            self.ui.play.setEnabled(True)
+            self.ui.play.setChecked(True)
+        elif state == Phonon.PausedState:
+            self.ui.stop.setEnabled(True)
+            self.ui.play.setEnabled(True)
+            self.ui.play.setChecked(False)
+            
         
     def assetClicked(self, asset=None):
         if asset is None: return
@@ -43,6 +60,7 @@ class Main(QtGui.QMainWindow):
         self.ui.player.seek(0)
         self.ui.play.setChecked(False)
         self.mediaObject=self.ui.player.mediaObject()
+        self.mediaObject.stateChanged.connect(self.stateChanged)
         self.mediaObject.setTickInterval(100)
         self.mediaObject.tick.connect(self.tick)
         #self.ui.seekplaceholder.deleteLater()
@@ -61,7 +79,7 @@ class Main(QtGui.QMainWindow):
             self.ui.player.pause()
             self.ui.play.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
 
-    def on_addAsset_clicked(self, b = None):
+    def on_addAsset_triggered(self, b = None):
         if b is None: return
         
         fname=QtGui.QFileDialog.getOpenFileName()
