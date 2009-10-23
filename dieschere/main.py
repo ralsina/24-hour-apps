@@ -13,6 +13,7 @@ from PyQt4.phonon import Phonon
 from Ui_main import Ui_MainWindow
 from Ui_filmlabel import Ui_Form as Ui_FilmLabel
 
+
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
     def __init__(self):
@@ -155,7 +156,7 @@ class Main(QtGui.QMainWindow):
                 inputs.append(item.widget().fname)
                 i+=1
             inputs=' '.join(["'%s'"%f for f in inputs])
-            cmd='mencoder -ovc copy -oac copy %s -o %s'%(inputs,fname)
+            cmd='mencoder -ovc lavc -oac lavc %s -o %s'%(inputs,fname)
             # TODO use subprocess, run in a window
             os.system(cmd)
 
