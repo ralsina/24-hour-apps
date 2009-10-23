@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 11:35:19 2009
+# Created: Fri Oct 23 12:29:54 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,29 +50,28 @@ class Ui_MainWindow(object):
         self.player.setSizePolicy(sizePolicy)
         self.player.setObjectName("player")
         self.gridLayout.addWidget(self.player, 0, 0, 1, 1)
-        self.volumeSlider = phonon.Phonon.VolumeSlider(self.dockWidgetContents)
-        self.volumeSlider.setOrientation(QtCore.Qt.Vertical)
-        self.volumeSlider.setObjectName("volumeSlider")
-        self.gridLayout.addWidget(self.volumeSlider, 0, 1, 1, 1)
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.controls = QtGui.QHBoxLayout()
+        self.controls.setObjectName("controls")
         self.play = QtGui.QToolButton(self.dockWidgetContents)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/player_play.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.play.setIcon(icon)
         self.play.setCheckable(True)
         self.play.setObjectName("play")
-        self.horizontalLayout.addWidget(self.play)
+        self.controls.addWidget(self.play)
         self.pause = QtGui.QToolButton(self.dockWidgetContents)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/icons/player_stop.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pause.setIcon(icon1)
         self.pause.setObjectName("pause")
-        self.horizontalLayout.addWidget(self.pause)
-        self.seek = phonon.Phonon.SeekSlider(self.dockWidgetContents)
-        self.seek.setObjectName("seek")
-        self.horizontalLayout.addWidget(self.seek)
-        self.gridLayout.addLayout(self.horizontalLayout, 1, 0, 1, 1)
+        self.controls.addWidget(self.pause)
+        self.volslider = phonon.Phonon.VolumeSlider(self.dockWidgetContents)
+        self.volslider.setObjectName("volslider")
+        self.controls.addWidget(self.volslider)
+        self.seekslider = phonon.Phonon.SeekSlider(self.dockWidgetContents)
+        self.seekslider.setObjectName("seekslider")
+        self.controls.addWidget(self.seekslider)
+        self.gridLayout.addLayout(self.controls, 1, 0, 1, 1)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_3 = QtGui.QLabel(self.dockWidgetContents)

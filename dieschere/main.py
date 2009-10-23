@@ -22,16 +22,37 @@ class Main(QtGui.QMainWindow):
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.mediaObject=None
 
         # Load a video, so I can implement the media controls
-        self.ui.player.load(Phonon.MediaSource('/home/ralsina/videostato/Video000.avi'))
 
         # Enable-disable buttons as needed
         self.timer=QtCore.QTimer()
         self.assets=QtGui.QButtonGroup()
         self.assets.setExclusive(True)
+        self.assets.buttonClicked.connect(self.assetClicked)
         
+    def tick(self):
+        t=self.mediaObject.currentTime()
+        print t, self.ui.seeker.value()
         
+    def assetClicked(self, asset=None):
+        if asset is None: return
+        self.mediaSource=Phonon.MediaSource(asset.fname)
+        self.ui.player.load(self.mediaSource)
+        self.ui.player.seek(0)
+        self.ui.play.setChecked(False)
+        self.mediaObject=self.ui.player.mediaObject()
+        self.mediaObject.setTickInterval(100)
+        self.mediaObject.tick.connect(self.tick)
+        #self.ui.seekplaceholder.deleteLater()
+        self.ui.seekslider.deleteLater()
+        self.ui.volslider.deleteLater()
+        self.ui.seekslider=Phonon.SeekSlider(self.mediaObject)
+        self.ui.volslider=Phonon.VolumeSlider(self.ui.player.audioOutput())
+        self.ui.controls.addWidget(self.ui.seekslider)
+        self.ui.controls.addWidget(self.ui.volslider)
+                
     def on_play_toggled(self, b):
         if b: #play pressed
             self.ui.player.play()
@@ -59,7 +80,7 @@ class FilmLabel(QtGui.QPushButton):
         self.setFixedSize(128,128)
         self.setCheckable(True)
         
-        # TODO: replace the icon with a capture from the videostato
+        # TODO: replace the icon with a capture from the video
         self.ui.label.setText(os.path.basename(fname))
         
     def setChecked(self, b):
@@ -79,6 +100,7 @@ def main():
     # Again, this is boilerplate, it's going to be the same on 
     # almost every app you write
     app = QtGui.QApplication(sys.argv)
+    app.setApplicationName('Die Schere')
     window=Main()
     window.show()
     # It's exec_ because exec is a reserved word in Python

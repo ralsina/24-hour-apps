@@ -60,15 +60,8 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="Phonon::VolumeSlider" name="volumeSlider">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="controls">
        <item>
         <widget class="QToolButton" name="play">
          <property name="text">
@@ -95,7 +88,10 @@
         </widget>
        </item>
        <item>
-        <widget class="Phonon::SeekSlider" name="seek"/>
+        <widget class="Phonon::VolumeSlider" name="volslider"/>
+       </item>
+       <item>
+        <widget class="Phonon::SeekSlider" name="seekslider"/>
        </item>
       </layout>
      </item>
