@@ -24,8 +24,6 @@ class Main(QtGui.QMainWindow):
 
         self.mediaObject=None
 
-        # Load a video, so I can implement the media controls
-
         # Enable-disable buttons as needed
         self.timer=QtCore.QTimer()
         self.assets=QtGui.QButtonGroup()
@@ -144,6 +142,22 @@ class Main(QtGui.QMainWindow):
         fname=QtGui.QFileDialog.getOpenFileName()
         if fname:
             self.addAsset(fname)
+            
+    def on_actionRender_triggered(self,b=None):
+        if b is not None: return
+        fname=QtGui.QFileDialog.getSaveFileName()
+        if fname:
+            inputs=[]
+            i=0
+            while True:
+                item=self.ui.output.itemAt(i)
+                if item is None: break
+                inputs.append(item.widget().fname)
+                i+=1
+            inputs=' '.join(["'%s'"%f for f in inputs])
+            cmd='mencoder -ovc copy -oac copy %s -o %s'%(inputs,fname)
+            # TODO use subprocess, run in a window
+            os.system(cmd)
 
 class FilmLabel(QtGui.QPushButton):
     def __init__(self, fname):
