@@ -100,7 +100,11 @@ class Main(QtGui.QMainWindow):
             
             # TODO use subprocess, run in a window
             os.system(cmd)
-        
+            
+            # Add asset of the cutted clip
+            label=FilmLabel(unicode(fname))
+            self.ui.assets.addWidget(label)
+            self.assets.addButton(label)        
             
     def on_play_toggled(self, b):
         if b: #play pressed
