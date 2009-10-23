@@ -11,6 +11,7 @@ from PyQt4.phonon import Phonon
 
 # Import the compiled UI module
 from Ui_main import Ui_MainWindow
+from Ui_filmlabel import Ui_Form as Ui_FilmLabel
 
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
@@ -27,6 +28,9 @@ class Main(QtGui.QMainWindow):
 
         # Enable-disable buttons as needed
         self.timer=QtCore.QTimer()
+        self.assets=QtGui.QButtonGroup()
+        self.assets.setExclusive(True)
+        
         
     def on_play_toggled(self, b):
         if b: #play pressed
@@ -42,7 +46,34 @@ class Main(QtGui.QMainWindow):
         fname=QtGui.QFileDialog.getOpenFileName()
         if fname:
             # Add an asset for this video
-            self.ui.assets.addWidget(QtGui.QLabel(fname))
+            label=FilmLabel(unicode(fname))
+            self.ui.assets.addWidget(label)
+            self.assets.addButton(label)
+
+class FilmLabel(QtGui.QPushButton):
+    def __init__(self, fname):
+        QtGui.QPushButton.__init__(self)
+        self.ui=Ui_FilmLabel()
+        self.ui.setupUi(self)
+        self.fname=fname
+        self.setFixedSize(128,128)
+        self.setCheckable(True)
+        
+        # TODO: replace the icon with a capture from the videostato
+        self.ui.label.setText(os.path.basename(fname))
+        
+    def setChecked(self, b):
+        # TODO: Figure out why this is not being called
+        
+        if b:
+            self.label.setBackgroundRole(QtGui.QPalette.Highlight)
+            self.label.setForegroundRole(QtGui.QPalette.HighlightedText)
+        else:
+            self.label.setBackgroundRole(QtGui.QPalette.Window)
+            self.label.setForegroundRole(QtGui.QPalette.WindowText)
+            
+        return QtGui.QPushButton.setChecked(b)
+        
 
 def main():
     # Again, this is boilerplate, it's going to be the same on 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 11:22:32 2009
+# Created: Fri Oct 23 11:35:19 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -135,12 +135,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.removeAsset)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.scrollArea = QtGui.QScrollArea(self.dockWidgetContents_2)
+        self.scrollArea.setMinimumSize(QtCore.QSize(0, 156))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.assetContainer = QtGui.QWidget(self.scrollArea)
-        self.assetContainer.setGeometry(QtCore.QRect(0, 0, 578, 190))
+        self.assetContainer.setGeometry(QtCore.QRect(0, 0, 578, 152))
         self.assetContainer.setObjectName("assetContainer")
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.assetContainer)
+        self.horizontalLayout_4.setMargin(0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.assets = QtGui.QHBoxLayout()
         self.assets.setObjectName("assets")
