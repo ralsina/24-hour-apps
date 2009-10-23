@@ -147,7 +147,7 @@ class FilmLabel(QtGui.QPushButton):
         self.ui=Ui_FilmLabel()
         self.ui.setupUi(self)
         self.fname=fname
-        self.setFixedSize(128,128)
+        self.setFixedSize(128,160)
         self.setCheckable(True)
         
         # TODO: replace the icon with a capture from the video

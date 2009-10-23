@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>579</width>
-    <height>522</height>
+    <width>611</width>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -155,7 +155,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>579</width>
+     <width>611</width>
      <height>28</height>
     </rect>
    </property>
@@ -172,7 +172,6 @@
     <bool>false</bool>
    </attribute>
    <addaction name="addAsset"/>
-   <addaction name="removeAsset"/>
   </widget>
   <widget class="QDockWidget" name="dockWidget">
    <property name="sizePolicy">
@@ -218,7 +217,7 @@
           <x>0</x>
           <y>0</y>
           <width>152</width>
-          <height>188</height>
+          <height>198</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -273,7 +272,7 @@
           <x>0</x>
           <y>0</y>
           <width>152</width>
-          <height>152</height>
+          <height>160</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
