@@ -13,6 +13,7 @@ from PyQt4.phonon import Phonon
 from Ui_main import Ui_MainWindow
 from Ui_filmlabel import Ui_Form as Ui_FilmLabel
 
+import subprocess 
 
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
@@ -32,7 +33,16 @@ class Main(QtGui.QMainWindow):
         self.assets.buttonClicked.connect(self.assetClicked)
         self.ui.centralwidget.adjustSize()
         self.curClip=None
-        
+
+	self.message=QtGui.QLabel()
+
+	self.progress=QtGui.QProgressBar()
+	self.progress.setMaximum(100)
+	#self.progress.setPercentageVisible(True)
+	self.statusBar().addWidget(self.message,1)
+	self.statusBar().addWidget(self.progress,0)
+        self.progress.hide()
+
     def tick(self):
         t1=self.mediaObject.currentTime()
         t=t1/1000
@@ -113,12 +123,25 @@ class Main(QtGui.QMainWindow):
             cmd='mencoder -ovc copy -oac copy %s -ss %s -endpos %s -o %s'%\
                 (self.curClip,t1,t2,fname)
             print 'CMD:',cmd
-            
-            # TODO use subprocess, run in a window
-            os.system(cmd)
-            
+	    self.proc = QtCore.QProcess(self)
+	    self.proc.setProcessChannelMode(QtCore.QProcess.MergedChannels)
+	    self.proc.readyReadStandardOutput.connect(self.mencoderProgress)
+	    self.proc.finished.connect(self.mencoderDone)
+	    self.message.setText('Encoding '+ fname)
+	    self.proc.start('/usr/bin/mencoder',['-ovc','copy','-oac','copy',self.curClip,
+	    '-ss',str(t1),'-endpos',str(t2),'-o',fname])
             # Add asset of the cutted clip
             self.addAsset(fname)
+
+    def mencoderDone(self):
+	self.message.setText('Job finished')
+	self.progress.hide()
+
+    def mencoderProgress(self):
+	self.progress.show()
+	l=str(self.proc.readLine())[2:].strip()
+	pos=int(l.split('(')[1].split('%')[0])
+	self.progress.setValue(pos)
             
     def addAsset(self,fname):
         outputlabel=OutputLabel(unicode(fname),self.ui.output)
