@@ -172,6 +172,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="addAsset"/>
+   <addaction name="actionRender"/>
   </widget>
   <widget class="QDockWidget" name="dockWidget">
    <property name="sizePolicy">
@@ -296,6 +297,15 @@
    </property>
    <property name="text">
     <string>Add Asset</string>
+   </property>
+  </action>
+  <action name="actionRender">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/rebuild.svg</normaloff>:/icons/rebuild.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Render</string>
    </property>
   </action>
  </widget>

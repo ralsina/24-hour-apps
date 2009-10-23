@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 15:19:29 2009
+# Created: Fri Oct 23 15:22:28 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -167,7 +167,13 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap(":/icons/fileopen.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.addAsset.setIcon(icon4)
         self.addAsset.setObjectName("addAsset")
+        self.actionRender = QtGui.QAction(MainWindow)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/icons/rebuild.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionRender.setIcon(icon5)
+        self.actionRender.setObjectName("actionRender")
         self.toolBar.addAction(self.addAsset)
+        self.toolBar.addAction(self.actionRender)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -185,6 +191,7 @@ class Ui_MainWindow(object):
         self.dockWidget.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Output", None, QtGui.QApplication.UnicodeUTF8))
         self.dockWidget_3.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Assets", None, QtGui.QApplication.UnicodeUTF8))
         self.addAsset.setText(QtGui.QApplication.translate("MainWindow", "Add Asset", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionRender.setText(QtGui.QApplication.translate("MainWindow", "Render", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import phonon
 import icons_rc
