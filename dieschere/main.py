@@ -97,11 +97,17 @@ class Main(QtGui.QMainWindow):
             # mplayer shifts endpos by ss, so if you want a clip from 5 seconds
             # to 10 seconds, it's -ss 5 -endpos 5
             
-            h1,m1,s1=map(float,str(self.ui.cutFrom.text()).split(':'))
-            t1=h1*3600+m1*60+s1
+            if self.ui.markFrom.isChecked():
+                h1,m1,s1=map(float,str(self.ui.cutFrom.text()).split(':'))
+                t1=h1*3600+m1*60+s1
+            else: 
+                t1=0
             
-            h2,m2,s2=map(float,str(self.ui.cutTo.text()).split(':'))
-            t2=h2*3600+m2*60+s2
+            if self.ui.markTo.isChecked():
+                h2,m2,s2=map(float,str(self.ui.cutTo.text()).split(':'))
+                t2=h2*3600+m2*60+s2
+            else:
+                t2=99999999
             
             t2=t2-t1            
             
