@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'filmlabel.ui'
 #
-# Created: Fri Oct 23 14:53:10 2009
+# Created: Fri Oct 23 14:59:40 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,19 +40,19 @@ class Ui_Form(object):
         self.verticalLayout.addWidget(self.label_2)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.useClip = QtGui.QToolButton(Form)
+        self.b1 = QtGui.QToolButton(Form)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/mark.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.useClip.setIcon(icon)
-        self.useClip.setCheckable(True)
-        self.useClip.setObjectName("useClip")
-        self.horizontalLayout.addWidget(self.useClip)
-        self.deleteClip = QtGui.QToolButton(Form)
+        self.b1.setIcon(icon)
+        self.b1.setCheckable(True)
+        self.b1.setObjectName("b1")
+        self.horizontalLayout.addWidget(self.b1)
+        self.b2 = QtGui.QToolButton(Form)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/icons/fileclose.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.deleteClip.setIcon(icon1)
-        self.deleteClip.setObjectName("deleteClip")
-        self.horizontalLayout.addWidget(self.deleteClip)
+        self.b2.setIcon(icon1)
+        self.b2.setObjectName("b2")
+        self.horizontalLayout.addWidget(self.b2)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(Form)
@@ -61,8 +61,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QtGui.QApplication.translate("Form", "Form", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Form", "Name", None, QtGui.QApplication.UnicodeUTF8))
-        self.useClip.setText(QtGui.QApplication.translate("Form", "...", None, QtGui.QApplication.UnicodeUTF8))
-        self.deleteClip.setText(QtGui.QApplication.translate("Form", "...", None, QtGui.QApplication.UnicodeUTF8))
+        self.b1.setText(QtGui.QApplication.translate("Form", "...", None, QtGui.QApplication.UnicodeUTF8))
+        self.b2.setText(QtGui.QApplication.translate("Form", "...", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc
 

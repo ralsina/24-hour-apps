@@ -122,7 +122,7 @@ class Main(QtGui.QMainWindow):
             self.addAsset(fname)
             
     def addAsset(self,fname):
-        outputlabel=FilmLabel(unicode(fname))
+        outputlabel=OutputLabel(unicode(fname))
         label=FilmLabel(unicode(fname))
         label.outputLabel=outputlabel
         self.ui.assets.addWidget(label)
@@ -171,7 +171,7 @@ class FilmLabel(QtGui.QPushButton):
         return QtGui.QPushButton.setChecked(b)
         
         
-    def on_useClip_toggled(self, b=None):
+    def on_b1_toggled(self, b=None):
         if b is None: return
         if self.outputLabel is None:
             if not b: # This is the outputlabel
@@ -183,6 +183,14 @@ class FilmLabel(QtGui.QPushButton):
                 self.outputLabel.hide()
             else:
                 self.outputLabel.show()
+        
+class OutputLabel(FilmLabel):
+    def __init__(self,fname):
+        FilmLabel.__init__(self,fname)
+        self.ui.b1.setIcon(QtGui.QIcon(':/icons/up.svg'))
+        self.ui.b2.setIcon(QtGui.QIcon(':/icons/down.svg'))
+        self.ui.b1.setCheckable(False)
+        self.ui.b2.setCheckable(False)
         
 def main():
     # Again, this is boilerplate, it's going to be the same on 

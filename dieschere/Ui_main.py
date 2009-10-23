@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 14:53:09 2009
+# Created: Fri Oct 23 14:59:39 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -172,19 +172,7 @@ class Ui_MainWindow(object):
         icon5.addPixmap(QtGui.QPixmap(":/icons/fileclose.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.removeAsset.setIcon(icon5)
         self.removeAsset.setObjectName("removeAsset")
-        self.actionMove_Up = QtGui.QAction(MainWindow)
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/icons/up.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionMove_Up.setIcon(icon6)
-        self.actionMove_Up.setObjectName("actionMove_Up")
-        self.actionMove_Down = QtGui.QAction(MainWindow)
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/icons/down.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionMove_Down.setIcon(icon7)
-        self.actionMove_Down.setObjectName("actionMove_Down")
         self.toolBar.addAction(self.addAsset)
-        self.toolBar.addAction(self.actionMove_Up)
-        self.toolBar.addAction(self.actionMove_Down)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -203,8 +191,6 @@ class Ui_MainWindow(object):
         self.dockWidget_3.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Assets", None, QtGui.QApplication.UnicodeUTF8))
         self.addAsset.setText(QtGui.QApplication.translate("MainWindow", "Add Asset", None, QtGui.QApplication.UnicodeUTF8))
         self.removeAsset.setText(QtGui.QApplication.translate("MainWindow", "Remove Asset", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionMove_Up.setText(QtGui.QApplication.translate("MainWindow", "Move Up", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionMove_Down.setText(QtGui.QApplication.translate("MainWindow", "Move Down", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import phonon
 import icons_rc

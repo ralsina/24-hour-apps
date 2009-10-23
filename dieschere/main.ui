@@ -172,8 +172,6 @@
     <bool>false</bool>
    </attribute>
    <addaction name="addAsset"/>
-   <addaction name="actionMove_Up"/>
-   <addaction name="actionMove_Down"/>
   </widget>
   <widget class="QDockWidget" name="dockWidget">
    <property name="sizePolicy">
@@ -307,24 +305,6 @@
    </property>
    <property name="text">
     <string>Remove Asset</string>
-   </property>
-  </action>
-  <action name="actionMove_Up">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/up.svg</normaloff>:/icons/up.svg</iconset>
-   </property>
-   <property name="text">
-    <string>Move Up</string>
-   </property>
-  </action>
-  <action name="actionMove_Down">
-   <property name="icon">
-    <iconset resource="icons.qrc">
-     <normaloff>:/icons/down.svg</normaloff>:/icons/down.svg</iconset>
-   </property>
-   <property name="text">
-    <string>Move Down</string>
    </property>
   </action>
  </widget>
