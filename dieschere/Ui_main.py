@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 10:59:00 2009
+# Created: Fri Oct 23 11:12:23 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -134,9 +134,19 @@ class Ui_MainWindow(object):
         self.removeAsset.setObjectName("removeAsset")
         self.horizontalLayout_3.addWidget(self.removeAsset)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
-        self.assets = QtGui.QGraphicsView(self.dockWidgetContents_2)
+        self.scrollArea = QtGui.QScrollArea(self.dockWidgetContents_2)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.assetContainer = QtGui.QWidget(self.scrollArea)
+        self.assetContainer.setGeometry(QtCore.QRect(0, 0, 578, 190))
+        self.assetContainer.setObjectName("assetContainer")
+        self.horizontalLayout_4 = QtGui.QHBoxLayout(self.assetContainer)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.assets = QtGui.QHBoxLayout()
         self.assets.setObjectName("assets")
-        self.verticalLayout.addWidget(self.assets)
+        self.horizontalLayout_4.addLayout(self.assets)
+        self.scrollArea.setWidget(self.assetContainer)
+        self.verticalLayout.addWidget(self.scrollArea)
         self.dockWidget_2.setWidget(self.dockWidgetContents_2)
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(8), self.dockWidget_2)
 

@@ -35,7 +35,14 @@ class Main(QtGui.QMainWindow):
         else: #pause pressed
             self.ui.player.pause()
             self.ui.play.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
+
+    def on_addAsset_clicked(self, b = None):
+        if b is None: return
         
+        fname=QtGui.QFileDialog.getOpenFileName()
+        if fname:
+            # Add an asset for this video
+            self.ui.assets.addWidget(QtGui.QLabel(fname))
 
 def main():
     # Again, this is boilerplate, it's going to be the same on 
