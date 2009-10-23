@@ -32,6 +32,7 @@ class Main(QtGui.QMainWindow):
         self.assets.setExclusive(True)
         self.assets.buttonClicked.connect(self.assetClicked)
         self.ui.centralwidget.adjustSize()
+        self.curClip=None
         
     def tick(self):
         t1=self.mediaObject.currentTime()
@@ -68,6 +69,7 @@ class Main(QtGui.QMainWindow):
                     
     def assetClicked(self, asset=None):
         if asset is None: return
+        self.curClip=asset.fname
         self.mediaSource=Phonon.MediaSource(asset.fname)
         self.ui.player.load(self.mediaSource)
         self.ui.player.seek(0)
@@ -83,7 +85,23 @@ class Main(QtGui.QMainWindow):
         self.ui.volslider=Phonon.VolumeSlider(self.ui.player.audioOutput())
         self.ui.controls.addWidget(self.ui.seekslider)
         self.ui.controls.addWidget(self.ui.volslider)
-                
+            
+    def on_cut_clicked(self, b=None):
+        if b is not None: return
+        if not self.curClip: return
+        # Cut the current asset's section as selected.
+        fname=QtGui.QFileDialog.getSaveFileName()
+        if fname:
+            # Do the cutting
+            
+            # TODO add -endpos
+            cmd='mencoder -ovc copy -oac copy %s -ss %s -o %s'%(self.curClip,self.ui.cutFrom.text(),fname)
+            print 'CMD:',cmd
+            
+            # TODO use subprocess, run in a window
+            os.system(cmd)
+        
+            
     def on_play_toggled(self, b):
         if b: #play pressed
             self.ui.player.play()
