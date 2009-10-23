@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 10:49:32 2009
+# Created: Fri Oct 23 10:59:00 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,6 +17,17 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.centralwidget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label_2 = QtGui.QLabel(self.centralwidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_2.addWidget(self.label_2)
+        self.output = QtGui.QGraphicsView(self.centralwidget)
+        self.output.setObjectName("output")
+        self.verticalLayout_2.addWidget(self.output)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 28))
@@ -101,30 +112,33 @@ class Ui_MainWindow(object):
         self.dockWidget_2.setObjectName("dockWidget_2")
         self.dockWidgetContents_2 = QtGui.QWidget()
         self.dockWidgetContents_2.setObjectName("dockWidgetContents_2")
-        self.verticalLayout_3 = QtGui.QVBoxLayout(self.dockWidgetContents_2)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayout = QtGui.QVBoxLayout(self.dockWidgetContents_2)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.label = QtGui.QLabel(self.dockWidgetContents_2)
         self.label.setObjectName("label")
-        self.verticalLayout_3.addWidget(self.label)
+        self.horizontalLayout_3.addWidget(self.label)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
+        self.addAsset = QtGui.QToolButton(self.dockWidgetContents_2)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/icons/fileopen.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.addAsset.setIcon(icon4)
+        self.addAsset.setObjectName("addAsset")
+        self.horizontalLayout_3.addWidget(self.addAsset)
+        self.removeAsset = QtGui.QToolButton(self.dockWidgetContents_2)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/icons/fileclose.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.removeAsset.setIcon(icon5)
+        self.removeAsset.setObjectName("removeAsset")
+        self.horizontalLayout_3.addWidget(self.removeAsset)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.assets = QtGui.QGraphicsView(self.dockWidgetContents_2)
         self.assets.setObjectName("assets")
-        self.verticalLayout_3.addWidget(self.assets)
+        self.verticalLayout.addWidget(self.assets)
         self.dockWidget_2.setWidget(self.dockWidgetContents_2)
-        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(1), self.dockWidget_2)
-        self.dockWidget_4 = QtGui.QDockWidget(MainWindow)
-        self.dockWidget_4.setObjectName("dockWidget_4")
-        self.dockWidgetContents_4 = QtGui.QWidget()
-        self.dockWidgetContents_4.setObjectName("dockWidgetContents_4")
-        self.verticalLayout_4 = QtGui.QVBoxLayout(self.dockWidgetContents_4)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.label_2 = QtGui.QLabel(self.dockWidgetContents_4)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout_4.addWidget(self.label_2)
-        self.output = QtGui.QGraphicsView(self.dockWidgetContents_4)
-        self.output.setObjectName("output")
-        self.verticalLayout_4.addWidget(self.output)
-        self.dockWidget_4.setWidget(self.dockWidgetContents_4)
-        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.dockWidget_4)
+        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(8), self.dockWidget_2)
 
         self.retranslateUi(MainWindow)
         QtCore.QObject.connect(self.pause, QtCore.SIGNAL("clicked()"), self.player.stop)
@@ -132,6 +146,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "Output", None, QtGui.QApplication.UnicodeUTF8))
         self.play.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.pause.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("MainWindow", "Cut From:", None, QtGui.QApplication.UnicodeUTF8))
@@ -140,7 +155,8 @@ class Ui_MainWindow(object):
         self.markTo.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.cut.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("MainWindow", "Assets", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "Output", None, QtGui.QApplication.UnicodeUTF8))
+        self.addAsset.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
+        self.removeAsset.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import phonon
 import icons_rc
