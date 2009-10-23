@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'filmlabel.ui'
 #
-# Created: Fri Oct 23 14:42:05 2009
+# Created: Fri Oct 23 14:53:10 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
