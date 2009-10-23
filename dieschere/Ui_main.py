@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 13:25:26 2009
+# Created: Fri Oct 23 13:29:01 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -65,6 +65,7 @@ class Ui_MainWindow(object):
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/mark.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.markFrom.setIcon(icon2)
+        self.markFrom.setCheckable(True)
         self.markFrom.setObjectName("markFrom")
         self.horizontalLayout_2.addWidget(self.markFrom)
         self.label_4 = QtGui.QLabel(self.centralwidget)
@@ -75,6 +76,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.cutTo)
         self.markTo = QtGui.QToolButton(self.centralwidget)
         self.markTo.setIcon(icon2)
+        self.markTo.setCheckable(True)
         self.markTo.setObjectName("markTo")
         self.horizontalLayout_2.addWidget(self.markTo)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)

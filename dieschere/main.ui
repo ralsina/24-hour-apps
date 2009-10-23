@@ -93,6 +93,9 @@
          <iconset resource="icons.qrc">
           <normaloff>:/icons/mark.svg</normaloff>:/icons/mark.svg</iconset>
         </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -113,6 +116,9 @@
         <property name="icon">
          <iconset resource="icons.qrc">
           <normaloff>:/icons/mark.svg</normaloff>:/icons/mark.svg</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

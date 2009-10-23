@@ -34,8 +34,22 @@ class Main(QtGui.QMainWindow):
         self.ui.centralwidget.adjustSize()
         
     def tick(self):
-        t=self.mediaObject.currentTime()
-        
+        t1=self.mediaObject.currentTime()
+        t=t1/1000
+        if not self.ui.markFrom.isChecked():
+            h=t/3600
+            m=(t-h*3600)/60
+            s=t-h*3600-m*60
+            msec=t1-t*1000
+            self.ui.cutFrom.setText('%d:%d:%d.%d'%(h,m,s,msec))
+        if not self.ui.markTo.isChecked():
+            h=t/3600
+            m=(t-h*3600)/60
+            s=t-h*3600-m*60
+            msec=t1-t*1000
+            self.ui.cutTo.setText('%d:%d:%d.%d'%(h,m,s,msec))
+
+
     def stateChanged(self, state=None):
         if state is None: return
         
@@ -51,8 +65,7 @@ class Main(QtGui.QMainWindow):
             self.ui.stop.setEnabled(True)
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(False)
-            
-        
+                    
     def assetClicked(self, asset=None):
         if asset is None: return
         self.mediaSource=Phonon.MediaSource(asset.fname)
@@ -61,7 +74,7 @@ class Main(QtGui.QMainWindow):
         self.ui.play.setChecked(False)
         self.mediaObject=self.ui.player.mediaObject()
         self.mediaObject.stateChanged.connect(self.stateChanged)
-        self.mediaObject.setTickInterval(100)
+        self.mediaObject.setTickInterval(25)
         self.mediaObject.tick.connect(self.tick)
         #self.ui.seekplaceholder.deleteLater()
         self.ui.seekslider.deleteLater()
