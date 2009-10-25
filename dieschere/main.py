@@ -149,6 +149,9 @@ class Main(QtGui.QMainWindow):
         outputlabel=OutputLabel(unicode(fname),self.ui.output)
         label=FilmLabel(unicode(fname))
         label.outputLabel=outputlabel
+        img=videoThumb(unicode(fname))
+        label.ui.thumb.setPixmap(img)
+        outputlabel.ui.thumb.setPixmap(img)
         self.ui.assets.addWidget(label)
         self.ui.output.addWidget(outputlabel)
         self.assets.addButton(label)
@@ -258,7 +261,19 @@ def main():
     window.show()
     # It's exec_ because exec is a reserved word in Python
     sys.exit(app.exec_())
+
+def videoThumb(video):
+    td=os.tempnam()
+    os.mkdir(td)
+    # TODO: port to QProcess
+    os.system("mplayer -frames 1 -vo jpeg:outdir=%s '%s' -ao null"%(td,video))
+    tname=os.path.join(td,'00000001.jpg')
+    thumb=QtGui.QPixmap(tname).scaled(QtCore.QSize(96,96),QtCore.Qt.KeepAspectRatio)
+    os.unlink(tname)
+    os.rmdir(td)
+    return thumb
     
+
 
 if __name__ == "__main__":
     main()

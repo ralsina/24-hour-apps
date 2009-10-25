@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'filmlabel.ui'
 #
-# Created: Fri Oct 23 15:22:29 2009
+# Created: Sun Oct 25 16:20:36 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,18 +26,18 @@ class Ui_Form(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
-        self.label_2 = QtGui.QLabel(Form)
+        self.thumb = QtGui.QLabel(Form)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(128)
         sizePolicy.setVerticalStretch(128)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setMinimumSize(QtCore.QSize(128, 80))
-        self.label_2.setMaximumSize(QtCore.QSize(128, 96))
-        self.label_2.setPixmap(QtGui.QPixmap(":/icons/film.svg"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout.addWidget(self.label_2)
+        sizePolicy.setHeightForWidth(self.thumb.sizePolicy().hasHeightForWidth())
+        self.thumb.setSizePolicy(sizePolicy)
+        self.thumb.setMinimumSize(QtCore.QSize(128, 80))
+        self.thumb.setMaximumSize(QtCore.QSize(128, 96))
+        self.thumb.setPixmap(QtGui.QPixmap(":/icons/film.svg"))
+        self.thumb.setScaledContents(True)
+        self.thumb.setObjectName("thumb")
+        self.verticalLayout.addWidget(self.thumb)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.b1 = QtGui.QToolButton(Form)

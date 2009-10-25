@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Oct 23 15:22:28 2009
+# Created: Sun Oct 25 16:20:36 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(611, 540)
+        MainWindow.resize(645, 508)
         self.centralwidget = QtGui.QWidget(MainWindow)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -90,7 +90,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 611, 28))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 645, 28))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -121,7 +121,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.outputContainer = QtGui.QWidget(self.scrollArea_2)
-        self.outputContainer.setGeometry(QtCore.QRect(0, 0, 152, 407))
+        self.outputContainer.setGeometry(QtCore.QRect(0, 0, 152, 375))
         self.outputContainer.setObjectName("outputContainer")
         self.horizontalLayout_5 = QtGui.QHBoxLayout(self.outputContainer)
         self.horizontalLayout_5.setMargin(0)
@@ -150,7 +150,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.assetContainer = QtGui.QWidget(self.scrollArea)
-        self.assetContainer.setGeometry(QtCore.QRect(0, 0, 152, 407))
+        self.assetContainer.setGeometry(QtCore.QRect(0, 0, 152, 375))
         self.assetContainer.setObjectName("assetContainer")
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.assetContainer)
         self.horizontalLayout_4.setMargin(0)
