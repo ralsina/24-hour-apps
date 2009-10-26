@@ -15,6 +15,17 @@ from Ui_filmlabel import Ui_Form as Ui_FilmLabel
 
 import subprocess 
 
+class Asset(object):
+    "Represents a clip, maybe later some other kind of asset"
+    def __init__(self,fname):
+        self.fname=unicode(fname)
+        
+    def createItem(self):
+        self.item=QtGui.QListWidgetItem(QtGui.QIcon(videoThumb(self.fname)),
+            os.path.basename(self.fname))
+        self.item.asset=self
+        return self.item
+
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
     def __init__(self):
@@ -30,7 +41,7 @@ class Main(QtGui.QMainWindow):
         self.timer=QtCore.QTimer()
         self.assets=QtGui.QButtonGroup()
         self.assets.setExclusive(True)
-        self.assets.buttonClicked.connect(self.assetClicked)
+        #self.assets.buttonClicked.connect(self.assetClicked)
         self.ui.centralwidget.adjustSize()
         self.curClip=None
 
@@ -42,6 +53,8 @@ class Main(QtGui.QMainWindow):
 	self.statusBar().addWidget(self.message,1)
 	self.statusBar().addWidget(self.progress,0)
         self.progress.hide()
+        
+        self.assets=[]
 
     def tick(self):
         t1=self.mediaObject.currentTime()
@@ -75,11 +88,16 @@ class Main(QtGui.QMainWindow):
             self.ui.stop.setEnabled(True)
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(False)
-                    
-    def assetClicked(self, asset=None):
-        if asset is None: return
-        self.curClip=asset.fname
-        self.mediaSource=Phonon.MediaSource(asset.fname)
+                  
+    def on_assets_itemDoubleClicked(self, item=None):
+        if item is None: return
+        asset = item.asset
+        self.ui.output.addItem(asset.createItem())
+
+    def selectClip(self, fname):
+        '''Select which clip the player shows'''
+        self.curClip=fname
+        self.mediaSource=Phonon.MediaSource(fname)
         self.ui.player.load(self.mediaSource)
         self.ui.player.seek(0)
         self.ui.play.setChecked(False)
@@ -94,6 +112,13 @@ class Main(QtGui.QMainWindow):
         self.ui.volslider=Phonon.VolumeSlider(self.ui.player.audioOutput())
         self.ui.controls.addWidget(self.ui.seekslider)
         self.ui.controls.addWidget(self.ui.volslider)
+
+    def on_assets_itemClicked(self, item=None):
+        if item is None: return
+        asset = item.asset
+        self.selectClip(asset.fname)
+            
+    on_output_itemClicked = on_assets_itemClicked        
             
     def on_cut_clicked(self, b=None):
         if b is not None: return
@@ -146,6 +171,11 @@ class Main(QtGui.QMainWindow):
 	self.progress.setValue(pos)
             
     def addAsset(self,fname):
+        asset=Asset(fname)
+        self.assets.append(asset)
+        self.ui.assets.addItem(asset.createItem())
+        return
+        # Old code, being replaced
         outputlabel=OutputLabel(unicode(fname),self.ui.output)
         label=FilmLabel(unicode(fname))
         label.outputLabel=outputlabel
