@@ -209,9 +209,9 @@ class Main(QtGui.QMainWindow):
             inputs=[]
             i=0
             while True:
-                item=self.ui.output.itemAt(i)
+                item=self.ui.output.item(i)
                 if item is None: break
-                inputs.append(item.widget().fname)
+                inputs.append(item.asset.fname)
                 i+=1
 	    self.proc = QtCore.QProcess(self)
 	    self.proc.setProcessChannelMode(QtCore.QProcess.MergedChannels)
