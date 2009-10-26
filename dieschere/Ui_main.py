@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Mon Oct 26 14:39:24 2009
+# Created: Mon Oct 26 14:41:47 2009
 #      by: PyQt4 UI code generator 4.6.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -94,6 +94,8 @@ class Ui_MainWindow(object):
         self.menubar.setObjectName("menubar")
         self.menuFile = QtGui.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
+        self.menuHelp = QtGui.QMenu(self.menubar)
+        self.menuHelp.setObjectName("menuHelp")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -175,6 +177,8 @@ class Ui_MainWindow(object):
         self.actionSaveProject_As.setObjectName("actionSaveProject_As")
         self.actionRemove_Asset = QtGui.QAction(MainWindow)
         self.actionRemove_Asset.setObjectName("actionRemove_Asset")
+        self.actionAbout_Die_Schere = QtGui.QAction(MainWindow)
+        self.actionAbout_Die_Schere.setObjectName("actionAbout_Die_Schere")
         self.menuFile.addAction(self.actionNew_Project)
         self.menuFile.addAction(self.actionSave_Project)
         self.menuFile.addAction(self.actionSaveProject_As)
@@ -184,7 +188,9 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionRemove_Asset)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionQuit)
+        self.menuHelp.addAction(self.actionAbout_Die_Schere)
         self.menubar.addAction(self.menuFile.menuAction())
+        self.menubar.addAction(self.menuHelp.menuAction())
         self.toolBar.addAction(self.addAsset)
         self.toolBar.addAction(self.actionRender)
 
@@ -200,6 +206,7 @@ class Ui_MainWindow(object):
         self.markTo.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.cut.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
         self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.dockWidget.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Output", None, QtGui.QApplication.UnicodeUTF8))
         self.dockWidget_3.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Clips", None, QtGui.QApplication.UnicodeUTF8))
@@ -215,6 +222,7 @@ class Ui_MainWindow(object):
         self.actionQuit.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+Q", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSaveProject_As.setText(QtGui.QApplication.translate("MainWindow", "Save Project As", None, QtGui.QApplication.UnicodeUTF8))
         self.actionRemove_Asset.setText(QtGui.QApplication.translate("MainWindow", "Remove Clip", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAbout_Die_Schere.setText(QtGui.QApplication.translate("MainWindow", "About Die Schere", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import phonon
 import icons_rc

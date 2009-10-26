@@ -95,11 +95,15 @@ class Main(QtGui.QMainWindow):
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(False)
 
-    def on_actionQuit_triggered(self, b=None):
+    def on_actionAbout_Die_Schere_triggered(self, b=None):
         if b is not None: return
         
-        # TODO: warn about losing changes
-        self.close()
+
+    def on_actionQuit_triggered(self, b=None):
+        if b is not None: return
+        self.on_actionNew_Project_triggered()
+        if not self.isWindowModified():
+            self.close()
 
     def on_actionNew_Project_triggered(self, b=None):
         if b is not None: return
