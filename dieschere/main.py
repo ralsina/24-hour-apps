@@ -11,7 +11,6 @@ from PyQt4.phonon import Phonon
 
 # Import the compiled UI module
 from Ui_main import Ui_MainWindow
-from Ui_filmlabel import Ui_Form as Ui_FilmLabel
 
 import subprocess 
 
@@ -175,17 +174,6 @@ class Main(QtGui.QMainWindow):
         self.assets.append(asset)
         self.ui.assets.addItem(asset.createItem())
         return
-        # Old code, being replaced
-        outputlabel=OutputLabel(unicode(fname),self.ui.output)
-        label=FilmLabel(unicode(fname))
-        label.outputLabel=outputlabel
-        img=videoThumb(unicode(fname))
-        label.ui.thumb.setPixmap(img)
-        outputlabel.ui.thumb.setPixmap(img)
-        self.ui.assets.addWidget(label)
-        self.ui.output.addWidget(outputlabel)
-        self.assets.addButton(label)
-        outputlabel.hide()
             
     def on_play_toggled(self, b):
         if b: #play pressed
@@ -259,29 +247,7 @@ class FilmLabel(QtGui.QPushButton):
                 self.outputLabel.hide()
             else:
                 self.outputLabel.show()
-        
-class OutputLabel(FilmLabel):
-    def __init__(self,fname,layout):
-        FilmLabel.__init__(self,fname)
-        self.ui.b1.setIcon(QtGui.QIcon(':/icons/up.svg'))
-        self.ui.b2.setIcon(QtGui.QIcon(':/icons/down.svg'))
-        self.ui.b1.setCheckable(False)
-        self.ui.b2.setCheckable(False)
-        self.layout=layout
-        
-    def on_b1_clicked(self, b=None):
-        if b is None: return
-        pos=self.layout.indexOf(self)
-        if pos>0:
-            self.layout.removeWidget(self)
-            self.layout.insertWidget(pos-1,self)
-        
-    def on_b2_clicked(self, b=None):
-        if b is None: return
-        pos=self.layout.indexOf(self)
-        self.layout.removeWidget(self)
-        self.layout.insertWidget(pos+1,self)
-        
+                
 def main():
     # Again, this is boilerplate, it's going to be the same on 
     # almost every app you write
