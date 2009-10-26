@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Mon Oct 26 15:52:59 2009
+# Created: Mon Oct 26 15:56:38 2009
 #      by: PyQt4 UI code generator 4.6.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -74,16 +74,14 @@ class Ui_MainWindow(object):
         self.markTo.setCheckable(True)
         self.markTo.setObjectName("markTo")
         self.horizontalLayout_2.addWidget(self.markTo)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
         self.cut = QtGui.QToolButton(self.centralwidget)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/editcut.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.cut.setIcon(icon2)
         self.cut.setObjectName("cut")
         self.horizontalLayout_2.addWidget(self.cut)
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem1)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
