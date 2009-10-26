@@ -45,6 +45,9 @@
          <iconset resource="icons.qrc">
           <normaloff>:/icons/player_play.svg</normaloff>:/icons/player_play.svg</iconset>
         </property>
+        <property name="shortcut">
+         <string>Space</string>
+        </property>
         <property name="checkable">
          <bool>true</bool>
         </property>

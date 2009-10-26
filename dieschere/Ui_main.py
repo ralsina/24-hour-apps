@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Mon Oct 26 15:28:25 2009
+# Created: Mon Oct 26 15:49:39 2009
 #      by: PyQt4 UI code generator 4.6.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -195,6 +195,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         self.play.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
+        self.play.setShortcut(QtGui.QApplication.translate("MainWindow", "Space", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("MainWindow", "Cut From:", None, QtGui.QApplication.UnicodeUTF8))
         self.markFrom.setText(QtGui.QApplication.translate("MainWindow", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("MainWindow", "Cut To:", None, QtGui.QApplication.UnicodeUTF8))
