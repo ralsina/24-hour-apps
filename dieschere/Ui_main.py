@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Mon Oct 26 14:18:12 2009
+# Created: Mon Oct 26 14:39:24 2009
 #      by: PyQt4 UI code generator 4.6.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -113,6 +113,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.output = QtGui.QListWidget(self.dockWidgetContents)
+        self.output.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         self.output.setFrameShape(QtGui.QFrame.NoFrame)
         self.output.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.output.setDragEnabled(True)
@@ -136,6 +137,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.assets = QtGui.QListWidget(self.dockWidgetContents_4)
+        self.assets.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         self.assets.setFrameShape(QtGui.QFrame.NoFrame)
         self.assets.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.assets.setDragEnabled(True)
@@ -200,8 +202,8 @@ class Ui_MainWindow(object):
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.toolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.dockWidget.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Output", None, QtGui.QApplication.UnicodeUTF8))
-        self.dockWidget_3.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Assets", None, QtGui.QApplication.UnicodeUTF8))
-        self.addAsset.setText(QtGui.QApplication.translate("MainWindow", "Add Asset", None, QtGui.QApplication.UnicodeUTF8))
+        self.dockWidget_3.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Clips", None, QtGui.QApplication.UnicodeUTF8))
+        self.addAsset.setText(QtGui.QApplication.translate("MainWindow", "Add Clip", None, QtGui.QApplication.UnicodeUTF8))
         self.addAsset.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+Shift+O", None, QtGui.QApplication.UnicodeUTF8))
         self.actionRender.setText(QtGui.QApplication.translate("MainWindow", "Render", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSave_Project.setText(QtGui.QApplication.translate("MainWindow", "Save Project", None, QtGui.QApplication.UnicodeUTF8))
@@ -212,7 +214,7 @@ class Ui_MainWindow(object):
         self.actionQuit.setText(QtGui.QApplication.translate("MainWindow", "Quit", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuit.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+Q", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSaveProject_As.setText(QtGui.QApplication.translate("MainWindow", "Save Project As", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionRemove_Asset.setText(QtGui.QApplication.translate("MainWindow", "Remove Asset", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionRemove_Asset.setText(QtGui.QApplication.translate("MainWindow", "Remove Clip", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import phonon
 import icons_rc

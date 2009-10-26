@@ -59,6 +59,9 @@ class Main(QtGui.QMainWindow):
         self.projectName=None
         self.setWindowFilePath('None')
         
+        self.ui.assets.addAction(self.ui.actionRemove_Asset)
+        self.ui.output.addAction(self.ui.actionRemove_Asset)
+                
     def tick(self):
         t1=self.mediaObject.currentTime()
         t=t1/1000
