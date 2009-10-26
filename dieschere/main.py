@@ -367,19 +367,21 @@ def main():
 def videoThumb(video):
     td=os.tempnam()
     os.mkdir(td)
-    try:
-        # TODO: port to QProcess
-        os.system("mplayer -frames 1 -vo jpeg:outdir=%s '%s' -ao null"%(td,video))
-        tname=os.path.join(td,'00000001.jpg')
+    proc=QtCore.QProcess()
+    proc = QtCore.QProcess()
+    proc.setProcessChannelMode(QtCore.QProcess.MergedChannels)
+    proc.start('/usr/bin/mplayer',['-frames','1','-vo',
+        'jpeg:outdir=%s'%td,'-ao','null',video])
+    proc.waitForFinished()
+    tname=os.path.join(td,'00000001.jpg')
+    if proc.exitCode()==0 and os.path.isfile(tname):
         thumb=QtGui.QPixmap(tname).scaled(QtCore.QSize(96,96),QtCore.Qt.KeepAspectRatio)
         os.unlink(tname)
-        os.rmdir(td)
-    except OSError:
-        os.rmdir(td)
-        return None
+    else:
+        thumb=None
+    os.rmdir(td)
     return thumb
-    
-
+   
 
 if __name__ == "__main__":
     main()

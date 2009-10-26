@@ -41,7 +41,7 @@
      id="base"
      showgrid="false"
      inkscape:zoom="2.8553846"
-     inkscape:cx="81.25"
+     inkscape:cx="39.224137"
      inkscape:cy="81.25"
      inkscape:window-x="242"
      inkscape:window-y="108"
@@ -56,12 +56,16 @@
        inkscape:persp3d-origin="81.25 : 54.166667 : 1"
        id="perspective10" />
   </defs>
-  <path
-     d="M 116.51193,18.396798 L 116.51193,145.12746"
-     style="font-size:12px;fill:none;fill-rule:evenodd;stroke:#4a4b4f;stroke-width:33.80700073;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     id="path7241" />
-  <path
-     d="M 51.378873,18.396798 L 51.378873,145.12746"
-     style="font-size:12px;fill:none;fill-rule:evenodd;stroke:#4a4b4f;stroke-width:33.80700073;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     id="path917" />
+  <g
+     id="g2380"
+     transform="translate(-2.6954015,-0.512129)">
+    <path
+       id="path7241"
+       style="font-size:12px;fill:none;fill-rule:evenodd;stroke:#4a4b4f;stroke-width:33.80699921;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 116.51193,18.396798 L 116.51193,145.12746" />
+    <path
+       id="path917"
+       style="font-size:12px;fill:none;fill-rule:evenodd;stroke:#4a4b4f;stroke-width:33.80699921;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 51.378873,18.396798 L 51.378873,145.12746" />
+  </g>
 </svg>
