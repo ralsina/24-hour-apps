@@ -18,9 +18,9 @@ class Asset(object):
     "Represents a clip, maybe later some other kind of asset"
     def __init__(self,fname):
         self.fname=unicode(fname)
-        
+        self.thumb=videoThumb(self.fname)
     def createItem(self):
-        self.item=QtGui.QListWidgetItem(QtGui.QIcon(videoThumb(self.fname)),
+        self.item=QtGui.QListWidgetItem(QtGui.QIcon(self.thumb),
             os.path.basename(self.fname))
         self.item.asset=self
         return self.item
@@ -171,6 +171,9 @@ class Main(QtGui.QMainWindow):
             
     def addAsset(self,fname):
         asset=Asset(fname)
+        if asset.thumb is None: #Unrecognized formart
+            QtGui.QMessageBox.critical(None,"Error opening %s"%fname, "File format not recognized. It doesn't look like a video to me")
+            return
         self.assets.append(asset)
         self.ui.assets.addItem(asset.createItem())
         return
@@ -261,12 +264,16 @@ def main():
 def videoThumb(video):
     td=os.tempnam()
     os.mkdir(td)
-    # TODO: port to QProcess
-    os.system("mplayer -frames 1 -vo jpeg:outdir=%s '%s' -ao null"%(td,video))
-    tname=os.path.join(td,'00000001.jpg')
-    thumb=QtGui.QPixmap(tname).scaled(QtCore.QSize(96,96),QtCore.Qt.KeepAspectRatio)
-    os.unlink(tname)
-    os.rmdir(td)
+    try:
+        # TODO: port to QProcess
+        os.system("mplayer -frames 1 -vo jpeg:outdir=%s '%s' -ao null"%(td,video))
+        tname=os.path.join(td,'00000001.jpg')
+        thumb=QtGui.QPixmap(tname).scaled(QtCore.QSize(96,96),QtCore.Qt.KeepAspectRatio)
+        os.unlink(tname)
+        os.rmdir(td)
+    except OSError:
+        os.rmdir(td)
+        return None
     return thumb
     
 
