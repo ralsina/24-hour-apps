@@ -3,7 +3,7 @@
 
 """The user interface for our app"""
 
-import os,sys
+import os,sys,codecs
 
 # Import Qt modules
 from PyQt4 import QtCore,QtGui
@@ -25,6 +25,12 @@ class Asset(object):
         self.item.asset=self
         return self.item
 
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
+
 # Create a class for our main window
 class Main(QtGui.QMainWindow):
     def __init__(self):
@@ -38,9 +44,6 @@ class Main(QtGui.QMainWindow):
 
         # Enable-disable buttons as needed
         self.timer=QtCore.QTimer()
-        self.assets=QtGui.QButtonGroup()
-        self.assets.setExclusive(True)
-        #self.assets.buttonClicked.connect(self.assetClicked)
         self.ui.centralwidget.adjustSize()
         self.curClip=None
 
@@ -53,8 +56,6 @@ class Main(QtGui.QMainWindow):
 	self.statusBar().addWidget(self.progress,0)
         self.progress.hide()
         
-        self.assets=[]
-
     def tick(self):
         t1=self.mediaObject.currentTime()
         t=t1/1000
@@ -87,6 +88,51 @@ class Main(QtGui.QMainWindow):
             self.ui.stop.setEnabled(True)
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(False)
+
+    def on_actionQuit_triggered(self, b=None):
+        if b is not None: return
+        
+        # TODO: warn about losing changes
+        self.close()
+
+    def on_actionNew_Project_triggered(self, b=None):
+        if b is not None: return
+        
+        # TODO: warn about losing changes
+        self.ui.assets.clear()
+        self.ui.output.clear()
+
+    def on_actionOpen_Project_triggered(self, b=None):
+        if b is not None: return
+        fname=QtGui.QFileDialog.getOpenFileName(self,"Open Project",os.getcwd(),"Project Files (*.schere)")
+        if fname:
+            proj=json.loads(codecs.open(fname,'r','utf-8').read())
+            for fname in proj['assets']:
+                self.addAsset(fname)
+            for fname in proj['output']:
+                self.addAsset(fname,output=True)
+                
+    def on_actionSave_Project_triggered(self, b=None):
+        if b is not None: return
+
+        fname=QtGui.QFileDialog.getSaveFileName(self,"Save Project",os.getcwd(),"Project Files (*.schere)")
+        if fname:
+
+            # A project is the current state of the program.
+            # So far, that means:
+            # * List of assets
+            # * List of output clips
+            
+            proj={}
+            proj['assets']=[]
+            proj['output']=[]
+            
+            for i in range (self.ui.assets.count()):
+                proj['assets'].append(self.ui.assets.item(i).asset.fname)
+            for i in range (self.ui.output.count()):
+                proj['output'].append(self.ui.output.item(i).asset.fname)
+            
+            codecs.open(fname,'w+','utf-8').write(json.dumps(proj))
                   
     def on_assets_itemDoubleClicked(self, item=None):
         if item is None: return
@@ -169,13 +215,15 @@ class Main(QtGui.QMainWindow):
 	pos=int(l.split('(')[1].split('%')[0])
 	self.progress.setValue(pos)
             
-    def addAsset(self,fname):
+    def addAsset(self,fname,output=False):
         asset=Asset(fname)
         if asset.thumb is None: #Unrecognized formart
-            QtGui.QMessageBox.critical(None,"Error opening %s"%fname, "File format not recognized. It doesn't look like a video to me")
+            QtGui.QMessageBox.critical(self,"Error opening %s"%fname, "File format not recognized. It doesn't look like a video to me")
             return
-        self.assets.append(asset)
-        self.ui.assets.addItem(asset.createItem())
+        if output:
+            self.ui.output.addItem(asset.createItem())
+        else:
+            self.ui.assets.addItem(asset.createItem())
         return
             
     def on_play_toggled(self, b):
