@@ -103,15 +103,12 @@ class Main(QtGui.QMainWindow):
         if state is None: return
         
         if state == Phonon.StoppedState:
-            self.ui.stop.setEnabled(False)
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(False)
         elif state == Phonon.PlayingState:
-            self.ui.stop.setEnabled(True)
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(True)
         elif state == Phonon.PausedState:
-            self.ui.stop.setEnabled(True)
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(False)
 
