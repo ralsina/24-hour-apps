@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Mon Oct 26 15:49:39 2009
+# Created: Mon Oct 26 15:52:59 2009
 #      by: PyQt4 UI code generator 4.6.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -22,6 +22,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setMaximumSize(QtCore.QSize(5000, 5000))
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_3.setMargin(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.player = phonon.Phonon.VideoPlayer(self.centralwidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
@@ -109,6 +110,7 @@ class Ui_MainWindow(object):
         self.dockWidgetContents = QtGui.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.dockWidgetContents)
+        self.verticalLayout_2.setMargin(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.output = QtGui.QListWidget(self.dockWidgetContents)
         self.output.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
