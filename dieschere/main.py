@@ -112,10 +112,6 @@ class Main(QtGui.QMainWindow):
             self.ui.play.setEnabled(True)
             self.ui.play.setChecked(False)
 
-    def on_actionAbout_Die_Schere_triggered(self, b=None):
-        if b is not None: return
-        
-
     def on_actionQuit_triggered(self, b=None):
         if b is not None: return
         self.on_actionNew_Project_triggered()
@@ -124,14 +120,14 @@ class Main(QtGui.QMainWindow):
 
     def on_actionAbout_Die_Schere_triggered(self, b=None):
         if b is not None: return
-        
-        QtGui.QMessageBox.about(self,'About Die Schere',
+        PAYPAL=r'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Q6R5YDDPM2RL6&lc=AR&item_name=Roberto%20Alsina&item_number=dieschere&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted'
+        QtGui.QMessageBox.about(self,r'About Die Schere',
         '<h3>Die Schere: a simple video editor</h3><br>'\
         'Version: %s<br>'
         'Author: <a href="mailto:ralsina@netmanagers.com.ar">Roberto Alsina &lt;ralsina@netmanagers.com.ar&gt;.<br></a>'\
         'Home Page: http://nothereyet<br>'\
-        'If you liked Die Schere, please consider donating money <a href="xxx">here</a><br>'\
-        '<h4>License</h4>Die Schere is free software licensed under the GPL version 2. <a href="%s">LICENSING TERMS</a>'%(VERSION,LICENSEFILE)
+        'If you liked Die Schere, please consider donating money <a href="%s">here</a><br>'\
+        '<h4>License</h4>Die Schere is free software licensed under the GPL version 2. <a href="%s">LICENSING TERMS</a>'%(VERSION,PAYPAL,LICENSEFILE)
         )
         
         
