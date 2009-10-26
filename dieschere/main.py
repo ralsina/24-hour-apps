@@ -272,45 +272,6 @@ class Main(QtGui.QMainWindow):
 	    self.proc.start('/usr/bin/mencoder',['-ovc','lavc','-oac','mp3lame']+inputs+
 						 ['-o',fname])
 
-class FilmLabel(QtGui.QPushButton):
-    def __init__(self, fname):
-        QtGui.QPushButton.__init__(self)
-        self.ui=Ui_FilmLabel()
-        self.ui.setupUi(self)
-        self.fname=fname
-        self.setFixedSize(128,160)
-        self.setCheckable(True)
-        self.outputLabel=None
-        
-        # TODO: replace the icon with a capture from the video
-        self.ui.label.setText(os.path.basename(fname))
-        
-    def setChecked(self, b):
-        # TODO: Figure out why this is not being called
-        
-        if b:
-            self.label.setBackgroundRole(QtGui.QPalette.Highlight)
-            self.label.setForegroundRole(QtGui.QPalette.HighlightedText)
-        else:
-            self.label.setBackgroundRole(QtGui.QPalette.Window)
-            self.label.setForegroundRole(QtGui.QPalette.WindowText)
-            
-        return QtGui.QPushButton.setChecked(b)
-        
-        
-    def on_b1_toggled(self, b=None):
-        if b is None: return
-        if self.outputLabel is None:
-            if not b: # This is the outputlabel
-                self.hide()
-            else:
-                self.show()
-        else: # This is the assetlabel
-            if not b:
-                self.outputLabel.hide()
-            else:
-                self.outputLabel.show()
-                
 def main():
     # Again, this is boilerplate, it's going to be the same on 
     # almost every app you write
