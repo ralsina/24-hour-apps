@@ -101,9 +101,20 @@ class Main(QtGui.QMainWindow):
     def on_actionNew_Project_triggered(self, b=None):
         if b is not None: return
         
-        # TODO: warn about losing changes
+        if self.isWindowModified():
+            # Make sure we are not losing data
+            r=QtGui.QMessageBox.question(self,"Close Document", 
+                "The current project has been modified. Do you want to save your changes or discard them?", 
+                QtGui.QMessageBox.Save | QtGui.QMessageBox.Discard | QtGui.QMessageBox.Cancel
+                )
+            if r==QtGui.QMessageBox.Cancel:
+                return
+            elif r==QtGui.QMessageBox.Save:
+                self.on_actionSave_Project_triggered()
+                
         self.ui.assets.clear()
         self.ui.output.clear()
+        self.setWindowModified(False)
 
     def on_actionOpen_Project_triggered(self, b=None):
         if b is not None: return
@@ -112,6 +123,8 @@ class Main(QtGui.QMainWindow):
             self.loadProject(fname)
                 
     def loadProject(self,fname):
+        self.on_actionNew_Project_triggered()
+            
         self.projectName=fname
         self.setWindowFilePath(self.projectName)
         proj=json.loads(codecs.open(fname,'r','utf-8').read())
@@ -121,15 +134,19 @@ class Main(QtGui.QMainWindow):
             self.addAsset(fname,output=True)
         self.setWindowModified(False)
         
-                
+    def on_actionSaveProject_As_triggered(self, b=None):
+        if b is not None: return
+        fname=QtGui.QFileDialog.getSaveFileName(self,"Save Project",os.getcwd(),"Project Files (*.schere)")
+        if fname:
+            self.projectName=fname
+            self.on_actionSave_Project_triggered()    
+        else:
+            return
+            
     def on_actionSave_Project_triggered(self, b=None):
         if b is not None: return
         if not self.projectName:
-            fname=QtGui.QFileDialog.getSaveFileName(self,"Save Project",os.getcwd(),"Project Files (*.schere)")
-            if fname:
-                self.projectName=fname
-            else:
-                return
+            self.on_actionSaveProject_As_triggered()
 
         # A project is the current state of the program.
         # So far, that means:
