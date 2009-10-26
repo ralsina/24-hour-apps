@@ -3,6 +3,23 @@
 
 """The user interface for our app"""
 
+#Die Schere: A video editor
+#Copyright (C) 2009  Roberto Alsina <ralsina@netmanagers.com.ar>
+
+#This program is free software; you can redistribute it and/or modify
+#it under the terms of the GNU General Public License version 2 as 
+#published by the Free Software Foundation.
+
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#You should have received a copy of the GNU General Public License along
+#with this program; if not, write to the Free Software Foundation, Inc.,
+#51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+
 import os,sys,codecs
 
 # Import Qt modules
@@ -13,6 +30,9 @@ from PyQt4.phonon import Phonon
 from Ui_main import Ui_MainWindow
 
 import subprocess 
+
+VERSION='0.0.0'
+LICENSEFILE=os.path.join(os.path.abspath(os.path.dirname(__file__)),'LICENSE.txt')
 
 class Asset(object):
     "Represents a clip, maybe later some other kind of asset"
@@ -104,6 +124,20 @@ class Main(QtGui.QMainWindow):
         self.on_actionNew_Project_triggered()
         if not self.isWindowModified():
             self.close()
+
+    def on_actionAbout_Die_Schere_triggered(self, b=None):
+        if b is not None: return
+        
+        QtGui.QMessageBox.about(self,'About Die Schere',
+        '<h3>Die Schere: a simple video editor</h3><br>'\
+        'Version: %s<br>'
+        'Author: <a href="mailto:ralsina@netmanagers.com.ar">Roberto Alsina &lt;ralsina@netmanagers.com.ar&gt;.<br></a>'\
+        'Home Page: http://nothereyet<br>'\
+        'If you liked Die Schere, please consider donating money <a href="xxx">here</a><br>'\
+        '<h4>License</h4>Die Schere is free software licensed under the GPL version 2. <a href="%s">LICENSING TERMS</a>'%(VERSION,LICENSEFILE)
+        )
+        
+        
 
     def on_actionNew_Project_triggered(self, b=None):
         if b is not None: return
