@@ -193,8 +193,15 @@ class Main(QtGui.QMainWindow):
         if item is None: return
         asset = item.asset
         self.selectClip(asset.fname)
+        for i in self.ui.output.selectedItems():
+            i.setSelected(False)
             
-    on_output_itemClicked = on_assets_itemClicked        
+    def on_output_itemClicked(self, item=None):
+        if item is None: return
+        asset = item.asset
+        self.selectClip(asset.fname)
+        for i in self.ui.assets.selectedItems():
+            i.setSelected(False)
             
     def on_cut_clicked(self, b=None):
         if b is not None: return
@@ -273,7 +280,15 @@ class Main(QtGui.QMainWindow):
         fname=QtGui.QFileDialog.getOpenFileName()
         if fname:
             self.addAsset(fname)
-            
+           
+    def on_actionRemove_Asset_triggered(self, b = None):
+        if b is None: return
+        
+        item=self.ui.assets.selectedItems()[0]
+        if item:
+            self.ui.assets.takeItem(self.ui.assets.row(item))
+        self.setWindowModified(True)
+           
     def on_actionRender_triggered(self,b=None):
         if b is not None: return
         fname=QtGui.QFileDialog.getSaveFileName()

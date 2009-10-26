@@ -166,6 +166,7 @@
     <addaction name="actionOpen_Project"/>
     <addaction name="separator"/>
     <addaction name="addAsset"/>
+    <addaction name="actionRemove_Asset"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
@@ -351,6 +352,11 @@
   <action name="actionSaveProject_As">
    <property name="text">
     <string>Save Project As</string>
+   </property>
+  </action>
+  <action name="actionRemove_Asset">
+   <property name="text">
+    <string>Remove Asset</string>
    </property>
   </action>
  </widget>

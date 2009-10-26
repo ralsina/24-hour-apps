@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Mon Oct 26 14:10:44 2009
+# Created: Mon Oct 26 14:18:12 2009
 #      by: PyQt4 UI code generator 4.6.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -171,12 +171,15 @@ class Ui_MainWindow(object):
         self.actionQuit.setObjectName("actionQuit")
         self.actionSaveProject_As = QtGui.QAction(MainWindow)
         self.actionSaveProject_As.setObjectName("actionSaveProject_As")
+        self.actionRemove_Asset = QtGui.QAction(MainWindow)
+        self.actionRemove_Asset.setObjectName("actionRemove_Asset")
         self.menuFile.addAction(self.actionNew_Project)
         self.menuFile.addAction(self.actionSave_Project)
         self.menuFile.addAction(self.actionSaveProject_As)
         self.menuFile.addAction(self.actionOpen_Project)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.addAsset)
+        self.menuFile.addAction(self.actionRemove_Asset)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionQuit)
         self.menubar.addAction(self.menuFile.menuAction())
@@ -209,6 +212,7 @@ class Ui_MainWindow(object):
         self.actionQuit.setText(QtGui.QApplication.translate("MainWindow", "Quit", None, QtGui.QApplication.UnicodeUTF8))
         self.actionQuit.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+Q", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSaveProject_As.setText(QtGui.QApplication.translate("MainWindow", "Save Project As", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionRemove_Asset.setText(QtGui.QApplication.translate("MainWindow", "Remove Asset", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyQt4 import phonon
 import icons_rc
