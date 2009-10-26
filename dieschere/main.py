@@ -56,6 +56,9 @@ class Main(QtGui.QMainWindow):
 	self.statusBar().addWidget(self.progress,0)
         self.progress.hide()
         
+        self.projectName=None
+        self.setWindowFilePath('None')
+        
     def tick(self):
         t1=self.mediaObject.currentTime()
         t=t1/1000
@@ -106,33 +109,40 @@ class Main(QtGui.QMainWindow):
         if b is not None: return
         fname=QtGui.QFileDialog.getOpenFileName(self,"Open Project",os.getcwd(),"Project Files (*.schere)")
         if fname:
+            self.projectName=fname
+            self.setWindowFilePath(self.projectName)
             proj=json.loads(codecs.open(fname,'r','utf-8').read())
             for fname in proj['assets']:
                 self.addAsset(fname)
             for fname in proj['output']:
                 self.addAsset(fname,output=True)
+            self.setWindowModified(False)
                 
     def on_actionSave_Project_triggered(self, b=None):
         if b is not None: return
+        if not self.projectName:
+            fname=QtGui.QFileDialog.getSaveFileName(self,"Save Project",os.getcwd(),"Project Files (*.schere)")
+            if fname:
+                self.projectName=fname
+            else:
+                return
 
-        fname=QtGui.QFileDialog.getSaveFileName(self,"Save Project",os.getcwd(),"Project Files (*.schere)")
-        if fname:
-
-            # A project is the current state of the program.
-            # So far, that means:
-            # * List of assets
-            # * List of output clips
-            
-            proj={}
-            proj['assets']=[]
-            proj['output']=[]
-            
-            for i in range (self.ui.assets.count()):
-                proj['assets'].append(self.ui.assets.item(i).asset.fname)
-            for i in range (self.ui.output.count()):
-                proj['output'].append(self.ui.output.item(i).asset.fname)
-            
-            codecs.open(fname,'w+','utf-8').write(json.dumps(proj))
+        # A project is the current state of the program.
+        # So far, that means:
+        # * List of assets
+        # * List of output clips
+        
+        proj={}
+        proj['assets']=[]
+        proj['output']=[]
+        
+        for i in range (self.ui.assets.count()):
+            proj['assets'].append(self.ui.assets.item(i).asset.fname)
+        for i in range (self.ui.output.count()):
+            proj['output'].append(self.ui.output.item(i).asset.fname)
+        
+        codecs.open(self.projectName,'w+','utf-8').write(json.dumps(proj))
+        self.setWindowModified(False)
                   
     def on_assets_itemDoubleClicked(self, item=None):
         if item is None: return
@@ -224,6 +234,8 @@ class Main(QtGui.QMainWindow):
             self.ui.output.addItem(asset.createItem())
         else:
             self.ui.assets.addItem(asset.createItem())
+            
+        self.setWindowModified(True)
         return
             
     def on_play_toggled(self, b):
