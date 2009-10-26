@@ -109,14 +109,18 @@ class Main(QtGui.QMainWindow):
         if b is not None: return
         fname=QtGui.QFileDialog.getOpenFileName(self,"Open Project",os.getcwd(),"Project Files (*.schere)")
         if fname:
-            self.projectName=fname
-            self.setWindowFilePath(self.projectName)
-            proj=json.loads(codecs.open(fname,'r','utf-8').read())
-            for fname in proj['assets']:
-                self.addAsset(fname)
-            for fname in proj['output']:
-                self.addAsset(fname,output=True)
-            self.setWindowModified(False)
+            self.loadProject(fname)
+                
+    def loadProject(self,fname):
+        self.projectName=fname
+        self.setWindowFilePath(self.projectName)
+        proj=json.loads(codecs.open(fname,'r','utf-8').read())
+        for fname in proj['assets']:
+            self.addAsset(fname)
+        for fname in proj['output']:
+            self.addAsset(fname,output=True)
+        self.setWindowModified(False)
+        
                 
     def on_actionSave_Project_triggered(self, b=None):
         if b is not None: return
@@ -275,10 +279,15 @@ class Main(QtGui.QMainWindow):
 def main():
     # Again, this is boilerplate, it's going to be the same on 
     # almost every app you write
-    app = QtGui.QApplication(sys.argv)
+    
+    
+    app = QtGui.QApplication(sys.argv[:1])
     app.setApplicationName('Die Schere')
     window=Main()
     window.show()
+    if len(sys.argv) > 1:
+        window.loadProject(sys.argv[1])
+
     # It's exec_ because exec is a reserved word in Python
     sys.exit(app.exec_())
 
