@@ -1,6 +1,6 @@
-==========
-Die Schere
-==========
+===================
+Die Schere Handbook
+===================
 
 ---------------------
 A Simple Video Editor
