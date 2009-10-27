@@ -288,7 +288,7 @@ class Main(QtGui.QMainWindow):
 	    self.proc.readyRead.connect(self.mencoderProgress)
 	    self.proc.finished.connect(self.mencoderDone)
 	    self.message.setText('Encoding '+ fname)
-	    self.proc.start('/usr/bin/mencoder',['-ovc','copy','-oac','copy',self.curClip,
+	    self.proc.start('mencoder',['-ovc','copy','-oac','copy',self.curClip,
 	    '-ss',str(t1),'-endpos',str(t2),'-o',fname])
             # Add asset of the cutted clip
             self.addAsset(fname)
