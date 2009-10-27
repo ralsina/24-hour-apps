@@ -1,0 +1,13 @@
+================
+Die Schere HOWTO
+================
+
+-----------------------
+A step-by-step tutorial
+-----------------------
+
+:Version: 0.0.1
+
+.. role:: keyword
+
+The howto goes here

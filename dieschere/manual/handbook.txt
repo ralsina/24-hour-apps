@@ -1,0 +1,13 @@
+==========
+Die Schere
+==========
+
+---------------------
+A Simple Video Editor
+---------------------
+
+:Version: 0.0.1
+
+.. role:: keyword
+
+The manual goes here
