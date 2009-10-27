@@ -282,6 +282,7 @@ class Main(QtGui.QMainWindow):
             cmd='mencoder -ovc copy -oac copy %s -ss %s -endpos %s -o %s'%\
                 (self.curClip,t1,t2,fname)
             print 'CMD:',cmd
+            # TODO: error handling
 	    self.proc = QtCore.QProcess(self)
 	    self.proc.setProcessChannelMode(QtCore.QProcess.MergedChannels)
 	    self.proc.readyRead.connect(self.mencoderProgress)
