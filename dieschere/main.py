@@ -32,6 +32,7 @@ from Ui_main import Ui_MainWindow
 import subprocess 
 
 VERSION='0.0.0'
+UI_VERSION=1
 LICENSEFILE=os.path.join(os.path.abspath(os.path.dirname(__file__)),'LICENSE.txt')
 
 class Asset(object):
@@ -82,6 +83,22 @@ class Main(QtGui.QMainWindow):
         self.ui.assets.addAction(self.ui.actionRemove_Asset)
         self.ui.output.addAction(self.ui.actionRemove_Asset)
                 
+        # Restore window state
+        settings=QtCore.QSettings("ralsina","dieschere")
+        self.restoreGeometry(settings.value("geometry").toByteArray());
+        self.restoreState(settings.value("state").toByteArray(),UI_VERSION);
+
+    def closeEvent(self, ev):
+        # Save window state
+        self.on_actionNew_Project_triggered()
+        if not self.isWindowModified():
+            settings=QtCore.QSettings("ralsina","dieschere")
+            settings.setValue("geometry", self.saveGeometry());
+            settings.setValue("state", self.saveState(UI_VERSION));
+            ev.accept()
+        else:
+            ev.ignore()
+
     def tick(self):
         t1=self.mediaObject.currentTime()
         t=t1/1000
